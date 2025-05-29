@@ -22,7 +22,7 @@ My setup was as follows:
 - Mythic C2 server to emulate attack
 - osTicket server for alerting and ticketing
 
-<img src="{{ site.static_files }}\docs\assets\diagram2.png" width="300">
+<img src="{{ site.static_files }}\assets\diagram2.png" width="300">
 
 This section won't be very long, as I won't go into detail about the lab setup. It'll be tedious explaining all the individual steps and isn't as important as the investigation. Instead, I'll focus on the highlights and what I learned.
 
@@ -32,7 +32,7 @@ I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range 
 
 So I could SSH into my machine, I generated an SSH keypair using `ssh-keygen` and inputting the key into the requested field.
 
-<img src="{{ site.static_files }}\docs\assets\ssh-auth.png" width="300">
+<img src="{{ baseurl }}\docs\assets\ssh-auth.png" width="300">
 
 
 I then began to install Elastic and Kibana on the machine using the following commands:
@@ -40,7 +40,7 @@ I then began to install Elastic and Kibana on the machine using the following co
 # Fetching installation packages
 wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.1-amd64.deb https://artifacts.elastic.co/downloads/kibana/kibana-9.0.1-amd64.deb
 ~~~
-<img src="{{ site.static_files }}\docs\assets\install-elastic-package.png" width="300">
+<img src="{{ site.baseurl }}\docs\assets\install-elastic-package.png" width="300">
 
 ~~~
 # Installing both instances
