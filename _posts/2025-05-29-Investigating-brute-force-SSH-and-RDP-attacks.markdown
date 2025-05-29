@@ -3,7 +3,7 @@ layout: page
 title: Investigating brute force SSH and RDP attacks
 permalink: /investigating-brute-force-ssh-and-rdp-attacks
 ---
-# Investigating brute force SSH and RDP attacks
+
 
 
 This lab is the very first one I completed while following along in a challenge ([MyDFIR's 30 day SOC Analyst challenge](https://youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6&si=j-P3c9dueGik3gG-)) to begin experimenting with a bare bones SOC environment that includes the the victim and attack machines, log forwarding and analysis using Fleet and the ELK stack, and Mythic to establish a C2 server, and osTicket for monitoring alerts. This was done entirely in the cloud using Digital Ocean's resources. The lab is fairly easy to set up and understand, and the majority of attacks today target cloud environments, so it's a good opportunity for any beginner like me to security to quickly cultivate practical experience.
@@ -26,6 +26,9 @@ My setup was as follows:
 
 This section won't be very long, as I won't go into detail about the lab setup. It'll be tedious explaining all the individual steps and isn't as important as the investigation. Instead, I'll focus on the highlights and what I learned.
 
+
+
+
 ### 1.
 I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range of `172.30.0.1-254` before creating the Ubuntu machine. ("MYDFIR-ELK") Both need to be in the same region/datacenter so they can see each other.
 
@@ -34,6 +37,8 @@ I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range 
 So I could SSH into my machine, I generated an SSH keypair using `ssh-keygen` and inputting the key into the requested field.
 
 <img src="{{ site.baseurl }}/assets/ssh-auth.png" width="500">
+
+
 
 
 ### 2. 
@@ -50,6 +55,8 @@ dpkg -i https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.1
 ~~~
 
 
+
+
 ### 3.
 Several configurations needed to be made. Before starting anything, it's important to write down the Elastic superuser password under "Security Autoconfiguration Information" so one can login to the console.
 
@@ -64,6 +71,8 @@ I then navigated to `usr/share/elasticsearch/bin` and executed:
 elasticsearch-create-enrollment-token --scope kibana
 ~~~
 generating the enrollment token for registration.
+
+
 
 
 ### 4. 

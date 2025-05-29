@@ -21,7 +21,7 @@
 title: Tam Trinh
 email: trinhtam@proton.me
 description: >- # this means to ignore newlines until "baseurl:"
-  Thank you for visitng my site.
+  Thank you for visiting my site.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  gr33n-lov3r
