@@ -1,14 +1,16 @@
 ---
 layout: page
-title: Detecting modern cloud-native threats
-permalink: /Detecting modern cloud-native threats
+title: Detecting common threats (WIP)
+permalink: /Detecting-common-threats
 ---
 
 
 
-This lab is the very first one I completed while following along in a challenge ([MyDFIR's 30 day SOC Analyst challenge](https://youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6&si=j-P3c9dueGik3gG-)) to begin experimenting with a bare bones SOC environment that includes the the victim and attack machines, log forwarding and analysis using Fleet and the ELK stack, and Mythic to establish a C2 server, and osTicket for monitoring alerts. This was done entirely in the cloud using VULTR's resources. The lab is fairly easy to set up and understand, and the majority of attacks today target cloud environments, so it's a good opportunity for any beginner like me to security to quickly cultivate practical experience.
+This lab is the very first one I completed while following along in a challenge ([MyDFIR's 30 day SOC Analyst challenge](https://youtube.com/playlist?list=PLG6KGSNK4PuBb0OjyDIdACZnb8AoNBeq6&si=j-P3c9dueGik3gG-)) to begin experimenting with a bare bones SOC environment that includes the the victim and attack machines, log forwarding and analysis using Fleet and the ELK stack, and Mythic to establish a C2 server, and osTicket for monitoring alerts. This was done entirely in the cloud using VULTR's resources. The lab is fairly easy to set up and understand, and the majority of attacks today target cloud environments, so it's a good opportunity for any beginner like me to security to quickly cultivate practical experience. 
 
-In this lab, I will be investigating brute force SSH and RDP attempts to the victim machines I've set up.
+I began this lab around October 2024 and finished most of it but suck at documentation, so this is a late write-up.
+
+In this lab, I will be investigating brute force SSH and RDP attempts, as well as C2 activity to the victim machines I've set up.
 
 ## Setting up the lab
 
@@ -23,7 +25,6 @@ My setup was as follows:
 - osTicket server (Windows Standard 2022) to track and manage incidents
 
 <img src="{{ site.baseurl }}/assets/VULTR (CP).png" width="700">
-# Add attack diagram too
 
 
 ### 1. Creation of VPC and Ubuntu machine
