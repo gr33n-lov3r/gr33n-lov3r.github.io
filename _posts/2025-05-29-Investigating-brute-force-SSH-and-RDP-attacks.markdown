@@ -22,7 +22,7 @@ My setup was as follows:
 - Mythic C2 server (Ubuntu 22.04) to emulate attack
 - osTicket server (Windows Standard 2022) to track and manage incidents
 
-<img src="{{ site.baseurl }}/assets/diagram2.png" width="700">
+<img src="{{ site.baseurl }}/assets/VULTR (CP).png" width="700">
 
 
 
