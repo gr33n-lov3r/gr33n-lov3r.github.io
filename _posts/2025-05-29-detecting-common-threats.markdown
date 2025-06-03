@@ -31,7 +31,6 @@ My setup was as follows:
 I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range of `172.30.0.1-254` before creating the Ubuntu machine. ("MYDFIR-ELK") Both need to be in the same region/datacenter so they can see each other. I also generated an SSH keypair to use to connect to my machine.
 
 <img src="{{ site.baseurl }}/assets/Untitled design(1).png" width="700">
-# Change image
 
 <img src="{{ site.baseurl }}/assets/ssh-auth.png" width="800">
 
@@ -54,7 +53,6 @@ Then, in both Elastic and Kibana's configuration files, I made a couple changes 
 I also created and modified a firewall in Digital Ocean via "Networking" to allow inbound TCP traffic from my public IP, as well as allowed port `5601` on the machine itself to ensure the web UI was accessible. 
 
 <img src="{{ site.baseurl }}/assets/firewall-allow.png" width="700">
-# Change the second image
 
 One more thing that is needed before accessing the console is an enrollment token for Kibana, which I got by navigating to `usr/share/elasticsearch/bin` and executing:
 ~~~
