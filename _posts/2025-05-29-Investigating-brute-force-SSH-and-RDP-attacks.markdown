@@ -29,19 +29,16 @@ This section won't be very long, as I won't go into detail about the lab setup. 
 
 
 
-### 1.
-I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range of `172.30.0.1-254` before creating the Ubuntu machine. ("MYDFIR-ELK") Both need to be in the same region/datacenter so they can see each other.
+### 1. Creation of VPC and Ubuntu machine
+I made my Virtual Private Cloud labeled "MYDFIR-SOC-Challenge" with an IP range of `172.30.0.1-254` before creating the Ubuntu machine. ("MYDFIR-ELK") Both need to be in the same region/datacenter so they can see each other. I also generated an SSH keypair to use to connect to my machine.
 
 <img src="{{ site.baseurl }}/assets/Untitled design(1).png" width="500">
 
-So I could SSH into my machine, I generated an SSH keypair using `ssh-keygen` and inputting the key into the requested field.
 
 <img src="{{ site.baseurl }}/assets/ssh-auth.png" width="500">
 
 
-
-
-### 2. 
+### 2. Installation of Elastic and Kibana
 I then began to install Elastic and Kibana on the machine using the following commands:
 ~~~
 # Fetching installation packages
@@ -54,33 +51,26 @@ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.1-am
 dpkg -i https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-9.0.1-amd64.deb https://artifacts.elastic.co/downloads/kibana/kibana-9.0.1-amd64.deb
 ~~~
 
-
-
-
-### 3.
-Several configurations needed to be made. Before starting anything, it's important to write down the Elastic superuser password under "Security Autoconfiguration Information" so one can login to the console.
-
-Elastic and Kibana's configuration files both have to be changed in order for the instance to be accessible on the "SOC Analyst" laptop, as well as the firewall. In the `elasticsearch.yml` and `kibana.yml` configuration files, `#network.host` must be uncommented and changed to the public IP address of the Ubuntu machine, along with `#http.port: 9200`, what Elastic uses for communication with Kibana and agents.
-
-Navigating to Networking in my DO dashboard shows an option to create a firewall for available machines. Using *my* public IP address, I allowed all inbound TCP traffic. And since Kibana is accessed through `port #5601`, I also allowed that on the virtual machine itself so I could use the web UI.
+I wrote down the superuser password that is generated for Elastic under "Security Autoconfiguration Information", as it is needed to login later. 
+Then, in both Elastic and Kibana's configuration files, I made a couple changes so the instance was accessible to the SOC Analyst laptop. I changed `#network.host` to the public IP address of the Ubuntu machine, and uncommented `#http.port: 9200` so Elastic could communicate with Kibana. 
+I also created and modified a firewall in Digital Ocean via "Networking" to allow inbound TCP traffic from my public IP, as well as allowed port `5601` on the machine itself to ensure the web UI was accessible. 
 
 <img src="{{ site.baseurl }}/assets/firewall-allow.png" width="500">
 
-I then navigated to `usr/share/elasticsearch/bin` and executed:
+One more thing that is needed before accessing the console is an enrollment token for Kibana, which I got by navigating to `usr/share/elasticsearch/bin` and executing:
 ~~~
 elasticsearch-create-enrollment-token --scope kibana
+~~~ 
+
+I entered the enrollment token, the superuser password generated, and after another return to the terminal, the 6-digit verification code requested which can be generated as follows:
 ~~~
-generating the enrollment token for registration.
-
-
-
-
-### 4. 
-After starting both services and accessing the console, I started entering information saved from earlier. 
-
-When asked for the verification code, I go to `usr/share/kibana/bin` and execute `kibana-verification-code`, which generates a 6-digit code. The password generated after installing Elastic from before is also needed here.
-
+Navigate to usr/share/kibana/bin
+Execute kibana-verification-code
+~~~
 <img src="{{ site.baseurl }}/assets/Untitled design.png" width="500">
+
+### 3. Installation of Windows 2022 Server
+
 
 
  
