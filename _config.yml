@@ -28,8 +28,6 @@ github_username:  gr33n-lov3r
 
 # Build settings
 theme: minima
-plugins:
-  - 
 
 # Exclude from processing.
 # The following items will not be processed, by default.
