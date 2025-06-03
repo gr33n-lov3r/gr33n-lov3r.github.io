@@ -63,7 +63,7 @@ I entered the enrollment token, the superuser password generated, and after anot
 
 <img src="{{ site.baseurl }}/assets/Untitled design.png" width="900">
 
-### 3. Installation of Windows 2022 Server
+### 2. Installation of Windows 2022 Server
 
 
  
